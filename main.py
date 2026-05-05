@@ -1,14 +1,13 @@
 # Copyright (c) Microsoft. All rights reserved.
 import asyncio
 import os
-import random
 from typing import Annotated, TypedDict
 
 from azure.identity import DefaultAzureCredential, get_bearer_token_provider
 from langchain_openai import ChatOpenAI
 from langgraph.graph import StateGraph, START, END
 from langgraph.graph.message import add_messages
-from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
+from langchain_core.messages import HumanMessage, AIMessage
 
 from azure.ai.agentserver.responses import (
     CreateResponse,
