@@ -44,6 +44,18 @@ class CopyState(TypedDict):
     iteration: int                           # loop counter
     approved: bool                           # approval flag
 
+def extract_text(response) -> str:
+    """Extract plain text from LLM response regardless of content type.
+    use_responses_api=True returns content as a list of content blocks."""
+    if isinstance(response.content, str):
+        return response.content.strip()
+    elif isinstance(response.content, list):
+        return " ".join(
+            block.get("text", "") if isinstance(block, dict) else getattr(block, "text", "")
+            for block in response.content
+        ).strip()
+    return str(response.content).strip()
+
 BRAND_RULES = """
 MUST HAVE:
 - Warm and human — feels like written by a person, not a corporation
@@ -88,7 +100,7 @@ A haiku has exactly 3 lines with 5-7-5 syllable structure.
 Respond with ONLY the haiku — no title, no explanation, no punctuation outside the lines."""
 
     response = llm.invoke([HumanMessage(content=prompt)])
-    haiku = response.content.strip()
+    haiku = extract_text(response)
     print(f"Draft haiku:\n{haiku}")
 
     return {
@@ -127,7 +139,7 @@ DECISION: APPROVED or REJECTED
 FEEDBACK: (if APPROVED, write a warm one-sentence sign-off; if REJECTED, write 2-3 specific, actionable suggestions for improvement)"""
 
     response = llm.invoke([HumanMessage(content=prompt)])
-    review = response.content.strip()
+    review = extract_text(response)
     print(f"Review:\n{review}")
 
     approved = "DECISION: APPROVED" in review
