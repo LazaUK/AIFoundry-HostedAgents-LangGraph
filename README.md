@@ -10,7 +10,7 @@ This repo demonstrates how to build and deploy a **LangGraph-based Workflow** to
 ## 📑 Table of Contents
 - [Part 1: Prerequisites](#part-1-prerequisites)
 - [Part 2: Environment Setup](#part-2-environment-setup)
-- [Part 5: Local Testing](#part-5-local-testing)
+- [Part 3: Local Testing](#part-3-local-testing)
 - [Part 6: Deploy to Foundry](#part-6-deploy-to-foundry)
 - [Part 7: Testing the Deployed Agent](#part-7-testing-the-deployed-agent)
 
@@ -92,3 +92,40 @@ debugpy
 langgraph
 langchain-openai
 ```
+---
+
+## Part 3: Local Testing
+
+### 3.1 Start the Agent
+
+Press **F5** in VS Code. This runs the agent server locally on `http://localhost:8088` with the debugger attached.
+
+You should see in the terminal:
+
+``` JSON
+Executing AITK task: debug-check-prerequisites
+Checking port occupancy: 5679, 8088
+✓ Port 5679 is available
+✓ Port 8088 is available
+
+Task completed successfully.
+ *  Terminal will be reused by tasks, press any key to close it. 
+ *  Executing task: & '"C:\Program Files\Python311\python.exe"' -m debugpy --listen 127.0.0.1:5679 main.py --port 8088 
+
+2026-05-06 01:52:41,027 INFO azure.ai.agentserver: Responses protocol: storage_provider=InMemoryResponseProvider, default_model=(not set), default_fetch_history_count=20, shutdown_grace_period=10s
+2026-05-06 01:52:41,443 INFO azure.ai.agentserver: AgentServerHost starting on 0.0.0.0:8088
+2026-05-06 01:52:41,451 INFO azure.ai.agentserver: AgentServerHost started
+2026-05-06 01:52:41,451 INFO azure.ai.agentserver: Platform environment: is_hosted=False, agent_name=(not set), agent_version=(not set), port=8088, session_id=(not set), sse_keepalive_interval=disabled
+```
+
+### 3.2 Test in Agent Inspector
+
+1. Open the Command Palette (`Ctrl+Shift+P`);
+2. Run **AI Toolkit: Open Agent Inspector**;
+3. It connects to `http://localhost:8088` automatically;
+4. Type a product name, for example: `noise-cancelling headphones`.
+
+The _Copywriter_ agent will draft a haiku, the _Brand Guardian_ agent will review it, and the loop runs until approved. You will see the final approved haiku with the Brand Guardian's sign-off.
+
+![Agent Inspector](images/agent_inspector.png)
+
