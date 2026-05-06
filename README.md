@@ -8,10 +8,22 @@ This repo demonstrates how to build and deploy a **LangGraph-based Workflow** to
 ---
 
 ## 📑 Table of Contents
-- [Part 1: How It Works](#part-1-how-it-works)
-- [Part 2: Prerequisites](#part-2-prerequisites)
+- [Part 1: Prerequisites](#part-1-prerequisites)
 - [Part 3: Environment Setup](#part-3-environment-setup)
 - [Part 4: Project Setup in VS Code](#part-4-project-setup-in-vs-code)
 - [Part 5: Local Testing](#part-5-local-testing)
 - [Part 6: Deploy to Foundry](#part-6-deploy-to-foundry)
 - [Part 7: Testing the Deployed Agent](#part-7-testing-the-deployed-agent)
+
+---
+
+## Part 1: Prerequisites
+
+Before getting started, ensure you have:
+
+- **Azure Subscription** with access to provision **Microsoft Foundry**
+- **Microsoft project** with a deployed GPT model (e.g., `gpt-4.1-mini`)
+- **VS Code** with the **Microsoft Foundry Toolkit** extension installed
+
+> [!NOTE]
+> You don't require Docker Desktop. The VS Code extension pushes Dockerfile to Azure Container Registry to bui;d required Docker image in the cloud.
