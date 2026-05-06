@@ -35,9 +35,6 @@ Before getting started, ensure you have:
 
 Create a Microsoft Foundry **account** and **project**, then deploy a GPT model (e.g., `gpt-4.1-mini`).
 
-> [!IMPORTANT]
-> This solution uses an **Azure OpenAI endpoint**, not a Microsoft Foundry Project endpoint.
-
 ### 2.2 RBAC Permissions
 
 The VS Code extension handles most RBAC assignments automatically during deployment, including:
@@ -53,3 +50,6 @@ Updated the provided `.env` file in the names of our Foundry account and GPT mod
 AZURE_OPENAI_ENDPOINT=https://<FOUNDRY_ACCOUNT>.openai.azure.com/
 AZURE_AI_MODEL_DEPLOYMENT_NAME=<FOUNDRY_MODEL>
 ```
+
+> [!NOTE]
+> This solution uses an **Azure OpenAI endpoint**, not a Microsoft Foundry Project endpoint.
