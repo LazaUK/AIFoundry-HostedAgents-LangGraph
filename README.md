@@ -101,7 +101,7 @@ langchain-openai
 
 Press **F5** in VS Code. This runs the agent server locally on `http://localhost:8088` with the debugger attached.
 
-You should see in the terminal:
+You should see something like this in the terminal:
 
 ``` JSON
 Executing AITK task: debug-check-prerequisites
