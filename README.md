@@ -12,7 +12,7 @@ This repo demonstrates how to build and deploy a **LangGraph-based Workflow** to
 - [Part 2: Environment Setup](#part-2-environment-setup)
 - [Part 3: Local Testing](#part-3-local-testing)
 - [Part 4: Deploy to Foundry](#part-4-deploy-to-foundry)
-- [Part 7: Testing the Deployed Agent](#part-7-testing-the-deployed-agent)
+- [Part 5: Testing the Deployed Agent](#part-5-testing-the-deployed-agent)
 
 ---
 
@@ -92,6 +92,7 @@ debugpy
 langgraph
 langchain-openai
 ```
+
 ---
 
 ## Part 3: Local Testing
@@ -150,3 +151,15 @@ Watch the **OUTPUT** panel in VS Code (filter by **Microsoft Foundry**). A succe
 [info] Hosted agent deployment process completed successfully
 [info] Found 1 versions for agent: demo-langgraph-agent
 ```
+
+---
+
+## Part 5: Testing the Deployed Agent
+
+Once deployed, the agent appears under **Hosted Agents** in the Microsoft Foundry extension tree view.
+
+### 5.1 Test in Agent Playground
+
+Select your agent in the drop-down field of VS Code's Agent Playground and click **Playground** tab. Enter a product name and watch the Copywriter / Brand Guardian agents to run in the cloud, with full trace visibility in the right panel.
+
+![Foundry Playground](images/agent_playground.png)
