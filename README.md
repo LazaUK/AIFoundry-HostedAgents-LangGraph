@@ -24,7 +24,7 @@ Before getting started, ensure you have:
 - **VS Code** with the **Microsoft Foundry Toolkit** extension installed.
 
 > [!NOTE]
-> You don't require Docker Desktop. The VS Code extension pushes Dockerfile to Azure Container Registry to bui;d required Docker image in the cloud.
+> You don't require Docker Desktop. The VS Code extension pushes Dockerfile to Azure Container Registry and builds required Docker image in the cloud.
 
 ---
 
