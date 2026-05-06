@@ -10,7 +10,6 @@ This repo demonstrates how to build and deploy a **LangGraph-based Workflow** to
 ## 📑 Table of Contents
 - [Part 1: Prerequisites](#part-1-prerequisites)
 - [Part 2: Environment Setup](#part-2-environment-setup)
-- [Part 4: Project Setup in VS Code](#part-4-project-setup-in-vs-code)
 - [Part 5: Local Testing](#part-5-local-testing)
 - [Part 6: Deploy to Foundry](#part-6-deploy-to-foundry)
 - [Part 7: Testing the Deployed Agent](#part-7-testing-the-deployed-agent)
@@ -21,8 +20,8 @@ This repo demonstrates how to build and deploy a **LangGraph-based Workflow** to
 
 Before getting started, ensure you have:
 
-- **Azure Subscription** with access to provision **Microsoft Foundry**
-- **VS Code** with the **Microsoft Foundry Toolkit** extension installed
+- **Azure Subscription** with access to provision **Microsoft Foundry**;
+- **VS Code** with the **Microsoft Foundry Toolkit** extension installed.
 
 > [!NOTE]
 > You don't require Docker Desktop. The VS Code extension pushes Dockerfile to Azure Container Registry to bui;d required Docker image in the cloud.
@@ -39,17 +38,57 @@ Create a Microsoft Foundry **account** and **project**, then deploy a GPT model 
 
 The VS Code extension handles most RBAC assignments automatically during deployment, including:
 
-- `AcrPull` on Azure Container Registry for the Foundry managed identity
-- `Azure AI User` on the Foundry project for the agent identity
+- `AcrPull` on Azure Container Registry for the Foundry managed identity;
+- `Azure AI User` on the Foundry project for the agent identity.
 
 ### 2.3 Environment Variables
 
 Updated the provided `.env` file in the names of our Foundry account and GPT model's deployment:
 
-```
+``` JSON
 AZURE_OPENAI_ENDPOINT=https://<FOUNDRY_ACCOUNT>.openai.azure.com/
 AZURE_AI_MODEL_DEPLOYMENT_NAME=<FOUNDRY_MODEL>
 ```
 
 > [!NOTE]
 > This solution uses an **Azure OpenAI endpoint**, not a Microsoft Foundry Project endpoint.
+
+### 2.4 Configure `agent.yaml`
+
+Update the provided `agent.yaml` with your agent name and resource allocation, if required:
+
+``` YAML
+kind: hosted
+name: 'demo-langgraph-agent'
+protocols:
+  - protocol: responses
+    version: 1.0.0
+resources:
+  cpu: '0.5'
+  memory: '1.0Gi'
+environment_variables:
+  - name: AZURE_OPENAI_ENDPOINT
+    value: ${AZURE_OPENAI_ENDPOINT}
+  - name: AZURE_AI_MODEL_DEPLOYMENT_NAME
+    value: ${AZURE_AI_MODEL_DEPLOYMENT_NAME}
+```
+
+### 2.5 Install Dependencies
+
+Install required Python packages:
+
+``` PowerShell
+pip install -r requirements.txt
+```
+
+The `requirements.txt` includes:
+
+``` JSON
+azure-ai-agentserver-responses==1.0.0b5
+azure-identity
+openai
+python-dotenv
+debugpy
+langgraph
+langchain-openai
+```
