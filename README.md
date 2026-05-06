@@ -11,7 +11,7 @@ This repo demonstrates how to build and deploy a **LangGraph-based Workflow** to
 - [Part 1: Prerequisites](#part-1-prerequisites)
 - [Part 2: Environment Setup](#part-2-environment-setup)
 - [Part 3: Local Testing](#part-3-local-testing)
-- [Part 6: Deploy to Foundry](#part-6-deploy-to-foundry)
+- [Part 4: Deploy to Foundry](#part-4-deploy-to-foundry)
 - [Part 7: Testing the Deployed Agent](#part-7-testing-the-deployed-agent)
 
 ---
@@ -129,3 +129,24 @@ The _Copywriter_ agent will draft a haiku, the _Brand Guardian_ agent will revie
 
 ![Agent Inspector](images/agent_inspector.png)
 
+---
+
+## Part 4: Deploy to Foundry
+
+### 4.1 Deploy via VS Code
+
+1. Open the Command Palette (`Ctrl+Shift+P`)
+2. Run **Microsoft Foundry: Deploy Hosted Agent**
+3. Follow the prompts:
+   - Select your **Foundry project**;
+   - Select an **Azure Container Registry**;
+   - Choose **resource size** (CPU/memory).
+
+### 4.2 Monitor Deployment
+
+Watch the **OUTPUT** panel in VS Code (filter by **Microsoft Foundry**). A successful deployment ends with something like this:
+
+```
+[info] Hosted agent deployment process completed successfully
+[info] Found 1 versions for agent: demo-langgraph-agent
+```
