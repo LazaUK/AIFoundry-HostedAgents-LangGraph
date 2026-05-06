@@ -135,8 +135,8 @@ The _Copywriter_ agent will draft a haiku, the _Brand Guardian_ agent will revie
 
 ### 4.1 Deploy via VS Code
 
-1. Open the Command Palette (`Ctrl+Shift+P`)
-2. Run **Microsoft Foundry: Deploy Hosted Agent**
+1. Open the Command Palette (`Ctrl+Shift+P`);
+2. Run **Microsoft Foundry: Deploy Hosted Agent**;
 3. Follow the prompts:
    - Select your **Foundry project**;
    - Select an **Azure Container Registry**;
@@ -146,7 +146,7 @@ The _Copywriter_ agent will draft a haiku, the _Brand Guardian_ agent will revie
 
 Watch the **OUTPUT** panel in VS Code (filter by **Microsoft Foundry**). A successful deployment ends with something like this:
 
-```
+``` JSON
 [info] Hosted agent deployment process completed successfully
 [info] Found 1 versions for agent: demo-langgraph-agent
 ```
